@@ -11,9 +11,10 @@ conda activate surgicalmotion
 pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 torchaudio==0.10.0 -f https://download.pytorch.org/whl/torch_stable.html
 pip install matplotlib tensorboard scipy opencv-python tqdm tensorboardX configargparse ipdb kornia imageio[ffmpeg]
 ```
-
+## Data
+[data](https://drive.google.com/file/d/1jB-i2r0o9RZWTEh_sVQkSGoKL0YozrsL/view?usp=drive_link)
 ## Training
-1. Please refer to the [preprocessing instructions](preprocessing/README.md) for preparing input data for training SurgicalMotion.
+1. Please refer to the [preprocessing instructions](preprocessing/README.md) for preparing input data for training SurgicalMotion. 
 2. With processed input data, run the following command to start training:
     ```
     python train.py --config configs/default.txt --data_dir {sequence_directory}
