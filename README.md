@@ -20,3 +20,18 @@ pip install matplotlib tensorboard scipy opencv-python tqdm tensorboardX configa
     python train.py --config configs/default.txt --data_dir {sequence_directory}
     ```
     You can view visualizations on tensorboard by running `tensorboard --logdir logs/`. 
+
+
+
+
+
+## Citation
+```
+@article{zhan2024tracking,
+  title={Tracking Everything in Robotic-Assisted Surgery},
+  author={Zhan, Bohan and Zhao, Wang and Fang, Yi and Du, Bo and Vasconcelos, Francisco and Stoyanov, Danail and Elson, Daniel S and Huang, Baoru},
+  journal={arXiv preprint arXiv:2409.19821},
+  year={2024}
+}
+
+```
