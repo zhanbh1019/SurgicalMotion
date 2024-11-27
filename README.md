@@ -1,11 +1,10 @@
 # Tracking Everything in Robotic-Assisted Surgery
 Bohan Zhan, Wang Zhao, Yi Fang, Bo Du, Francisco Vasconcelos, Danail Stoyanov, Daniel S. Elson, Baoru Huang
 
-<center>
+<div align="center">
   #### [Paper](https://arxiv.org/abs/2409.19821)
-    ![main](./method.png)
-</center>
-
+</div>
+![main](./method.png)
 
 
 ## Installation
