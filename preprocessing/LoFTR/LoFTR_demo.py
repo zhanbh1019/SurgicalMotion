@@ -6,7 +6,7 @@ import torch
 import cv2
 import numpy as np
 import matplotlib.cm as cm
-import matplotlib.pyplot as plt  # 需要导入这个模块来显示图像
+import matplotlib.pyplot as plt  
 from matplotlib.patches import ConnectionPatch
 import glob
 from tqdm import tqdm
