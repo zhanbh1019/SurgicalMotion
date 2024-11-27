@@ -1,6 +1,10 @@
 # Tracking Everything in Robotic-Assisted Surgery
 Bohan Zhan, Wang Zhao, Yi Fang, Bo Du, Francisco Vasconcelos, Danail Stoyanov, Daniel S. Elson, Baoru Huang
 
+####  [Paper](https://arxiv.org/abs/2409.19821)
+
+![main](./method.jpg)
+
 ## Installation
 The code is tested with `python=3.8` and `torch=1.10.0+cu111`
 
