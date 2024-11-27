@@ -1,18 +1,36 @@
 # Tracking Everything in Robotic-Assisted Surgery
+Bohan Zhan, Wang Zhao, Yi Fang, Bo Du, Francisco Vasconcelos, Danail Stoyanov, Daniel S. Elson, Baoru Huang
 
 ## Installation
 The code is tested with `python=3.8` and `torch=1.10.0+cu111`
 
 ```
-git clone --recurse-submodules https://github.com/zhanbh1019/SurgicalMotion/
+git clone --recurse-submodules https://github.com/zhanbh1019/SurgicalMotion.git
 cd SurgicalMotion/
 conda create -n surgicalmotion python=3.8
 conda activate surgicalmotion
 pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 torchaudio==0.10.0 -f https://download.pytorch.org/whl/torch_stable.html
 pip install matplotlib tensorboard scipy opencv-python tqdm tensorboardX configargparse ipdb kornia imageio[ffmpeg]
 ```
-## Data
-[data](https://drive.google.com/file/d/1jB-i2r0o9RZWTEh_sVQkSGoKL0YozrsL/view?usp=drive_link)
+
+## Dataset
+We provide our [data](https://drive.google.com/file/d/1jB-i2r0o9RZWTEh_sVQkSGoKL0YozrsL/view?usp=drive_link), including image, mask and annotation.
+The data structure is as follows:
+```
+├──data
+    ├──sequence_name/
+        ├──color/
+            ├──00000.jpg
+            ├──00001.jpg
+            .....
+        ├──mask/ 
+            ├──00000.png
+            ├──00001.png
+            .....
+├──Anotation
+    ├──sequence_name.pkl
+```
+
 ## Training
 1. Please refer to the [preprocessing instructions](preprocessing/README.md) for preparing input data for training SurgicalMotion. 
 2. With processed input data, run the following command to start training:
@@ -22,8 +40,11 @@ pip install matplotlib tensorboard scipy opencv-python tqdm tensorboardX configa
     You can view visualizations on tensorboard by running `tensorboard --logdir logs/`. 
 
 
+## Evaluation
 
 
+## Acknowledgements
+Our work based on [OmniMotion](https://github.com/qianqianwang68/omnimotion). We appreciate the authors of relevant repository and paper.
 
 ## Citation
 ```
