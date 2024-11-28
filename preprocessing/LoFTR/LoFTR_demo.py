@@ -6,13 +6,12 @@ import torch
 import cv2
 import numpy as np
 import matplotlib.cm as cm
-import matplotlib.pyplot as plt  # 需要导入这个模块来显示图像
+import matplotlib.pyplot as plt  
 from matplotlib.patches import ConnectionPatch
 import glob
 from tqdm import tqdm
 
-import sys
-sys.path.append(r"/root/LoFTR")
+import argparse
 
 from src.utils.plotting import make_matching_figure
 
@@ -51,7 +50,7 @@ def run(imfile1,imfile2,out_dir,viz_path,matcher):
 def main(data_dir,out_dir,viz_path):
     default_cfg['coarse']
     matcher = LoFTR(config=default_cfg)
-    matcher.load_state_dict(torch.load("LoFTR/weights/outdoor_ds.ckpt")['state_dict'])
+    matcher.load_state_dict(torch.load("weights\outdoor_ds.ckpt")['state_dict'])
     matcher = matcher.eval().cuda()
 
     img_files = sorted(glob.glob(os.path.join(data_dir, 'color', '*')))
@@ -75,10 +74,17 @@ def main(data_dir,out_dir,viz_path):
 
 
 if __name__ == '__main__':
-    data_name = r'case6_9'
-    data_dir = r'autodl-tmp/{}'.format(data_name)
-    out_dir = r'autodl-tmp/{}/LoFTR_exhaustive'.format(data_name)
-    viz_path = r'autodl-tmp/{}/LoFTR_vis'.format(data_name)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--data_dir', type=str, required=True, help='dataset dir')
+
+    args = parser.parse_args()
+    data_name = os.path.basename(args.data_dir)
+
+    data_dir = args.data_dir
+
+    out_dir = os.path.join(data_dir,'LoFTR_exhaustive')
+    viz_path = os.path.join(data_dir,'LoFTR_vis')
+
     os.makedirs(out_dir, exist_ok=True)
     #os.makedirs(viz_path, exist_ok=True)
     main(data_dir,out_dir,viz_path)
