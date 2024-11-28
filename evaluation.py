@@ -55,7 +55,7 @@ def eval_one_sequence(args, annotation_dir, dataset_type, seq_name, out_dir, occ
     query_frame = np.round(query_frame).astype(np.int32)
     evaluation_points = one_hot_eye[query_frame] == 0 #
 
-    #query_points *= (1, model.h / 256, model.w / 256)
+
     ids1 = query_points[0, :, 0].astype(int)
     px1s = torch.from_numpy(query_points[:, :, [2, 1]]).transpose(0, 1).float().cuda()
 
@@ -69,15 +69,13 @@ def eval_one_sequence(args, annotation_dir, dataset_type, seq_name, out_dir, occ
                 use_max_loc=use_max_loc)
             results[:, :, i, :] = results_.transpose(0, 1).cpu().numpy()
             occlusions[:, :, i] = occlusions_.squeeze().cpu().numpy()
-    #target_points *= (model.w / 256, model.h / 256)
-    
 
-    #把图片改成256*256进行evaluation
+    
     target_points /= (model.w / 256, model.h / 256)
     results /= (model.w / 256, model.h / 256)
 
     metrics = {}
-    #true是遮挡
+    #true indicate occluded
     occlusion_mask = occlusions > occlusion_th
     out_of_boundary_mask = (results[..., 0] < 0) | (results[..., 0] > model.w - 1) | \
                             (results[..., 1] < 0) | (results[..., 1] > model.h - 1)
@@ -167,6 +165,7 @@ def eval_one_sequence(args, annotation_dir, dataset_type, seq_name, out_dir, occ
 def summarize(out_dir, dataset_type):
     result_files = sorted(glob.glob(os.path.join(out_dir, '*.csv')))
     sum_file = os.path.join(out_dir, '{}.csv'.format(dataset_type))
+    
     flag = True
     num_seqs = 0
     with open(sum_file, 'w', newline='') as outfile:
@@ -203,22 +202,20 @@ def summarize(out_dir, dataset_type):
 
 if __name__ == '__main__':
     args = config_parser()
-    args.use_max_loc = True
-    args.min_depth = 0
-    args.max_depth = 2
 
-    folder_path = r'E:\0 Baseline\Omnimotion_mask_arap_sparse' 
-    ckpt_dir = os.path.join(folder_path,'Result')
-    annotation_dir = r'E:\0 Baseline\Omnimotion\annotation'
+    ckpt_dir = args.save_dir
+    annotation_dir = r'.\dataset\annotation'
     seq_names = os.listdir(ckpt_dir)
-    dataset_type = 'tissue'
-    out_dir = r'E:\0 Baseline\Omnimotion_mask_arap_sparse\Evaluation\{}'.format(dataset_type)
+    dataset_type = 'tools' # tools or tissue
+    out_dir = r'\Evaluation\{}'.format(dataset_type)
+    os.makedirs(out_dir, exist_ok=True)
     
     
     for seq_name in seq_names:
-        args.data_dir = os.path.join(r'E:\0 Baseline\Omnimotion\Result', seq_name)
         args.ckpt_path = os.path.join(ckpt_dir, seq_name, 'model_100000.pth')
         eval_one_sequence(args, annotation_dir, dataset_type, seq_name, out_dir=out_dir)
 
 
-    summarize(out_dir, dataset_type)
+    #summarize(out_dir, dataset_type)
+
+
