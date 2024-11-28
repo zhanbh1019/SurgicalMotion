@@ -42,6 +42,14 @@ The processing contains several steps:
   We found this to be helpful for handling sequences with rapid motion and large displacements. 
   For simple motion, this may be skipped by omitting `--chain` to save processing time. 
 
+
+## Computing LoFTR
+Run the following command to compute LoFTR.
+```
+cd LoFTR
+python LoFTR_demo.py --data_dir {sequence_directory} 
+```
+
 After processing the folder should look like the following:
 ```
 ├──sequence_name/
@@ -52,12 +60,5 @@ After processing the folder should look like the following:
     ├──raft_exhaustive/
     ├──raft_masks/
     ├──flow_stats.json
+    ├──LoFTR_exhaustive
 ```
-
-## Computing LoFTR
-Run the following command to compute LoFTR.
-```
-cd LoFTR
-python LoFTR_demo.py 
-```
-
