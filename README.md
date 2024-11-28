@@ -55,7 +55,9 @@ The data structure is as follows:
 
 
 ## Evaluation
-
+    ```
+    python evaluation.py --config configs/default.txt --data_dir {sequence_directory}
+    ```
 
 ## Acknowledgements
 Our work based on [OmniMotion](https://github.com/qianqianwang68/omnimotion). We appreciate the authors of relevant repository and paper.
