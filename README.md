@@ -3,7 +3,7 @@
   <h1 align="center">Tracking Everything in Robotic-Assisted Surgery</h1>
   <div align="center">
     <h4><strong>Bohan Zhan, Wang Zhao, Yi Fang, Bo Du, Francisco Vasconcelos, Danail Stoyanov, Daniel S. Elson, Baoru Huang*</strong></h4>
-    <h3 align="center"> || <a href="https://arxiv.org/abs/2409.19821">Paper</a> || </h3>
+    <h3 align="center"> || <a href="https://arxiv.org/abs/2409.19821">Paper</a> ||<a href="https://zhanbh1019.github.io/SurgicalMotion.github.io/">Project ||</h3>
     <div align="center"></div>
   </div>
   <div align="center"></div>
