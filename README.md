@@ -28,7 +28,7 @@ pip install matplotlib tensorboard scipy opencv-python tqdm tensorboardX configa
 ```
 
 ## Dataset
-We provide our [data](https://drive.google.com/file/d/1jB-i2r0o9RZWTEh_sVQkSGoKL0YozrsL/view?usp=drive_link), including image, mask and annotation.
+We provide our [data](https://drive.google.com/file/d/1lSPCEUIYLjwa42GmYxLqAHO72VnG-az6/view?usp=sharing), including image, mask and annotation.
 The data structure is as follows:
 ```
 ├──data
